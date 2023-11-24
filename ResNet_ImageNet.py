@@ -4,7 +4,6 @@ import torchvision.transforms as transforms
 import matplotlib.pyplot as plt
 import numpy as np
 import torch.nn as nn
-import torch.nn.functional as F
 import torch.optim as optim
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -15,9 +14,9 @@ print(device)
 
 import os
 
-outputs = './outputs/imagenet64/'
-if not os.path.exists(outputs):
-    os.makedirs(outputs)
+output = './outputs/imagenet64/'
+if not os.path.exists(output):
+    os.makedirs(output)
 
 datasets = './dataset/imagenet64'
 checkpoints = './checkpoints/imagenet64/'
@@ -42,10 +41,10 @@ def get_imagenet64_data():
     ])
 
     trainset = torchvision.datasets.ImageFolder(root=datasets + '/train/', transform=transform_train)
-    trainloader = torch.utils.data.DataLoader(trainset, batch_size=128, shuffle=True, num_workers=2)
+    trainloader = torch.utils.data.DataLoader(trainset, batch_size=256, shuffle=True, num_workers=2)
 
     testset = torchvision.datasets.ImageFolder(root=datasets + '/val/', transform=transform_test)
-    testloader = torch.utils.data.DataLoader(testset, batch_size=128, shuffle=False, num_workers=2)
+    testloader = torch.utils.data.DataLoader(testset, batch_size=256, shuffle=False, num_workers=2)
 
     return {'train': trainloader, 'test': testloader}
 
@@ -60,7 +59,7 @@ print(images.size())
 # show images
 img = torchvision.utils.make_grid(images)
 plt.imshow(np.transpose(img.numpy(), (1, 2, 0)))
-plt.savefig(outputs + 'samples.png')
+plt.savefig(output + 'samples-resnet.png')
 
 # print labels
 print("Labels:" + ' '.join('%9s' % labels[j] for j in range(8)))
@@ -204,11 +203,14 @@ def train(net, dataloader, epochs=1, start_epoch=0, lr=0.01, momentum=0.9, decay
 
             if i % print_every == print_every - 1:  # print every 10 mini-batches
                 if verbose:
-                    print('[%d, %5d] loss: %.3f' % (epoch, i + 1, sum_loss / print_every))
+                    info = '[%d, %5d] loss: %.3f' % (epoch, i + 1, sum_loss / print_every)
+                    print(info)
+                    os.system('echo ' + info + ' >> ' + output + 'resnet-loss.txt')
+
                 sum_loss = 0.0
         if checkpoint_path:
             state = {'epoch': epoch + 1, 'net': net.state_dict(), 'optimizer': optimizer.state_dict(), 'losses': losses}
-            torch.save(state, checkpoint_path + 'checkpoint-resnet50-%d.pkl' % (epoch + 1))
+            torch.save(state, checkpoint_path + 'checkpoint-resnet-%d.pkl' % (epoch + 1))
     return losses
 
 
@@ -227,7 +229,7 @@ plt.plot(smooth(losses, 50))
 plt.title("Training Loss Curve")
 plt.xlabel("Iteration")
 plt.ylabel("Loss")
-plt.savefig(outputs + 'loss.png')
+plt.savefig(output + 'resnet-loss.png')
 
 
 def accuracy(net, dataloader):
