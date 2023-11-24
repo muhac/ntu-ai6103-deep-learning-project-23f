@@ -1,10 +1,10 @@
 #!/bin/bash
-#PBS -N ResNet50
-#PBS -l select=1:ngpus=1
-#PBS -l walltime=24:00:00
+#PBS -N ResNet
+#PBS -l select=4:ngpus=2
+#PBS -l walltime=48:00:00
 #PBS -j oe
-#PBS -o ResNet50.out
-#PBS -e ResNet50.err
+#PBS -o ResNet.out
+#PBS -e ResNet.err
 #PBS -P personal-limu0006
 #PBS -q normal
 
@@ -16,21 +16,21 @@ module load singularity
 echo `date`
 
 singularity run --nv /app/apps/containers/pytorch/pytorch-nvidia-22.04-py3.sif \
-    python ResNet50_with_ImageNet.py
+    python ResNet_ImageNet.py
 
 # Run on NSCC
 #
 # Submit the job:
-#   qsub ResNet50.pbs
+#   qsub ResNet.pbs
 # Check the status of the job:
 #   qstat -u limu0006
 # Cancel the job:
 #   qdel <job_id>
 # Check the output:
-#   cat ResNet50.out
+#   cat ResNet.out
 # Check the error:
-#   cat ResNet50.err
+#   cat ResNet.err
 
 # Recommend to run in dir ./outputs/
-# qsub ../ResNet50.pbs
+# qsub ../ResNet.pbs
 # qstat -u limu0006 && ls -l ../checkpoints/imagenet64/
