@@ -1,10 +1,25 @@
+import os
 import torch
-import torchvision
-import torchvision.transforms as transforms
-import matplotlib.pyplot as plt
-import numpy as np
 import torch.nn as nn
 import torch.optim as optim
+import torchvision
+import torchvision.transforms as transforms
+import numpy as np
+import matplotlib.pyplot as plt
+import random
+
+seed = 42
+
+# Set seed for PyTorch
+torch.manual_seed(seed)
+torch.backends.cudnn.deterministic = True
+torch.backends.cudnn.benchmark = False
+
+# Set seed for NumPy
+np.random.seed(seed)
+
+# Set seed for Python's random module
+random.seed(seed)
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 print(device)
@@ -12,7 +27,6 @@ print(device)
 ##########
 # Read data
 
-import os
 
 output = './outputs/imagenet64/'
 if not os.path.exists(output):
@@ -27,12 +41,11 @@ os.system('ls dataset/imagenet64/')
 os.system('ls checkpoints/imagenet64/')
 
 
-def get_imagenet64_data():
-    # Data augmentation transformations. Not for Testing!
+def get_dataset():
     transform_train = transforms.Compose([
-        transforms.Resize(64),  # Takes images smaller than 64 and enlarges them
-        transforms.RandomCrop(64, padding=4, padding_mode='edge'),  # Take 64x64 crops from 72x72 padded images
-        transforms.RandomHorizontalFlip(),  # 50% of time flip image along y-axis
+        transforms.Resize(64),
+        transforms.RandomCrop(64, padding=4, padding_mode='edge'),
+        transforms.RandomHorizontalFlip(),
         transforms.ToTensor(),
     ])
 
@@ -40,33 +53,26 @@ def get_imagenet64_data():
         transforms.ToTensor(),
     ])
 
-    trainset = torchvision.datasets.ImageFolder(root=datasets + '/train/', transform=transform_train)
-    trainloader = torch.utils.data.DataLoader(trainset, batch_size=256, shuffle=True, num_workers=2)
+    data_train = torchvision.datasets.ImageFolder(root=datasets + '/train/', transform=transform_train)
+    loader_train = torch.utils.data.DataLoader(data_train, batch_size=512, shuffle=True, num_workers=2)
 
-    testset = torchvision.datasets.ImageFolder(root=datasets + '/val/', transform=transform_test)
-    testloader = torch.utils.data.DataLoader(testset, batch_size=256, shuffle=False, num_workers=2)
+    data_test = torchvision.datasets.ImageFolder(root=datasets + '/val/', transform=transform_test)
+    loader_test = torch.utils.data.DataLoader(data_test, batch_size=512, shuffle=False, num_workers=2)
 
-    return {'train': trainloader, 'test': testloader}
+    return {'train': loader_train, 'test': loader_test}
 
 
-data = get_imagenet64_data()
+data = get_dataset()
 
-dataiter = iter(data['train'])
-images, labels = next(dataiter)
+images, labels = next(iter(data['train']))
 images = images[:8]
+labels = labels[:8]
 print(images.size())
 
-# show images
 img = torchvision.utils.make_grid(images)
 plt.imshow(np.transpose(img.numpy(), (1, 2, 0)))
 plt.savefig(output + 'samples-resnet.png')
-
-# print labels
-print("Labels:" + ' '.join('%9s' % labels[j] for j in range(8)))
-
-flat = torch.flatten(images, 1)
-print(images.size())
-print(flat.size())
+print("Labels:" + ' '.join(map(str, labels)))
 
 
 ##########
@@ -157,65 +163,74 @@ class ResNetBlock(nn.Module):
 ##########
 # Training
 
-def train(net, dataloader, epochs=1, start_epoch=0, lr=0.01, momentum=0.9, decay=0.0005,
-          verbose=1, print_every=10, state=None, schedule={}, checkpoint_path=None):
-    net.to(device)
-    net.train()
+def step_learning_rate(schedule, default=0.01):
+    def get_learning_rate(epoch):
+        lr = default
+        for i in range(epoch + 1):
+            if i in schedule:
+                lr = schedule[i]
+        return lr
+
+    return get_learning_rate
+
+
+def train(model, dataloader, total_epochs=1, start_epoch=0,
+          lr=0.01, momentum=0.9, decay=0.0005, schedule_func=None,
+          checkpoint_model=None, checkpoint_path=None):
+    model.to(device)
+    model.train()
     losses = []
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.SGD(net.parameters(), lr=lr, momentum=momentum, weight_decay=decay)
+    optimizer = optim.SGD(model.parameters(), lr=lr, momentum=momentum, weight_decay=decay)
 
-    # Load previous training state
-    if state:
-        net.load_state_dict(state['net'])
-        optimizer.load_state_dict(state['optimizer'])
-        start_epoch = state['epoch']
-        losses = state['losses']
+    # Load checkpoint model
+    if checkpoint_model:
+        model.load_state_dict(checkpoint_model['net'])
+        optimizer.load_state_dict(checkpoint_model['optimizer'])
+        start_epoch = checkpoint_model['epoch']
+        losses = checkpoint_model['losses']
 
-    # Fast forward lr schedule through already trained epochs
-    for epoch in range(start_epoch):
-        if epoch in schedule:
-            print("Learning rate: %f" % schedule[epoch])
-            for g in optimizer.param_groups:
-                g['lr'] = schedule[epoch]
+    for epoch in range(start_epoch, total_epochs):
+        # Update learning rate
+        if schedule_func is not None:
+            lr = schedule_func(epoch)
+        for params in optimizer.param_groups:
+            params['lr'] = lr
 
-    for epoch in range(start_epoch, epochs):
-        sum_loss = 0.0
-
-        # Update learning rate when scheduled
-        if epoch in schedule:
-            print("Learning rate: %f" % schedule[epoch])
-            for g in optimizer.param_groups:
-                g['lr'] = schedule[epoch]
-
-        for i, batch in enumerate(dataloader, 0):
-            inputs, labels = batch[0].to(device), batch[1].to(device)
+        for batch, batch_data in enumerate(dataloader, 0):
+            xs = batch_data[0].to(device)
+            ys = batch_data[1].to(device)
 
             optimizer.zero_grad()
 
-            outputs = net(inputs)
-            loss = criterion(outputs, labels)
-            loss.backward()  # autograd magic, computes all the partial derivatives
-            optimizer.step()  # takes a step in gradient direction
+            outputs = model(xs)
+            loss = criterion(outputs, ys)
+            loss.backward()
+            optimizer.step()
 
             losses.append(loss.item())
-            sum_loss += loss.item()
 
-            if i % print_every == print_every - 1:  # print every 10 mini-batches
-                if verbose:
-                    info = '[%d, %5d] loss: %.3f' % (epoch, i + 1, sum_loss / print_every)
-                    print(info)
-                    os.system('echo ' + info + ' >> ' + output + 'resnet-loss.txt')
+            info = f'"Epoch {epoch}, Batch {batch}: loss: {loss.item():.3f} (LR={lr})"'
+            os.system('echo ' + info + ' >> ' + output + 'resnet-loss.txt')
 
-                sum_loss = 0.0
-        if checkpoint_path:
-            state = {'epoch': epoch + 1, 'net': net.state_dict(), 'optimizer': optimizer.state_dict(), 'losses': losses}
-            torch.save(state, checkpoint_path + 'checkpoint-resnet-%d.pkl' % (epoch + 1))
+        # Save checkpoint every 2 epochs
+        if epoch % 2 == 1 and checkpoint_path:
+            checkpoint_model = {
+                'epoch': epoch + 1,
+                'net': model.state_dict(),
+                'optimizer': optimizer.state_dict(),
+                'losses': losses,
+            }
+            torch.save(checkpoint_model, checkpoint_path + 'checkpoint-resnet-%d.pkl' % (epoch + 1))
     return losses
 
 
 net = ResNet50(ResNetBlock)
-losses = train(net, data['train'], epochs=20, schedule={0: .1, 5: .01, 15: .001}, checkpoint_path=checkpoints)
+train_losses = train(
+    net, data['train'], 20,
+    schedule_func=step_learning_rate({0: .1, 5: .01, 15: .001}),
+    checkpoint_path=checkpoints,
+)
 
 
 ##########
@@ -225,26 +240,27 @@ def smooth(x, size):
     return np.convolve(x, np.ones(size) / size, mode='valid')
 
 
-plt.plot(smooth(losses, 50))
+plt.plot(smooth(train_losses, 50))
 plt.title("Training Loss Curve")
 plt.xlabel("Iteration")
 plt.ylabel("Loss")
 plt.savefig(output + 'resnet-loss.png')
 
 
-def accuracy(net, dataloader):
-    net.to(device)
-    net.eval()
-    correct = 0
+def accuracy(model, dataloader):
+    model.to(device)
+    model.eval()
+    corrects = 0
     total = 0
     with torch.no_grad():
-        for batch in dataloader:
-            images, labels = batch[0].to(device), batch[1].to(device)
-            outputs = net(images)
-            _, predicted = torch.max(outputs.data, 1)
-            total += labels.size(0)
-            correct += (predicted == labels).sum().item()
-    return correct / total
+        for batch_data in dataloader:
+            xs = batch_data[0].to(device)
+            ys = batch_data[1].to(device)
+            outputs = model(xs)
+            _, ys_hat = torch.max(outputs.data, 1)
+            total += ys.size(0)
+            corrects += (ys == ys_hat).sum().item()
+    return corrects / total
 
 
 print("Training accuracy: %f" % accuracy(net, data['train']))
