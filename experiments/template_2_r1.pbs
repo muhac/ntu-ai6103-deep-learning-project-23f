@@ -1,0 +1,28 @@
+#!/bin/bash
+#PBS -N SENet_R1
+#PBS -l select=1:ngpus=1
+#PBS -l walltime=4:00:00
+#PBS -j oe
+#PBS -P personal-limu0006
+#PBS -q normal
+
+cd && cd work/projects/ai6103_project/experiments
+
+module load anaconda3/2021.11
+module load singularity
+
+echo `date`
+
+export CUBLAS_WORKSPACE_CONFIG=:16:8
+
+singularity run --nv /app/apps/containers/pytorch/pytorch-nvidia-22.04-py3.sif \
+    python template_2_r1.py
+
+# Run on NSCC
+#
+# Submit the job:
+#   qsub template.pbs
+# Check the status of the job:
+#   qstat -u limu0006
+# Cancel the job:
+#   qdel <job_id>
