@@ -1,0 +1,254 @@
+Sun Nov 26 22:24:37 +08 2023
+
+=============
+== PyTorch ==
+=============
+
+NVIDIA Release 22.04 (build 36527063)
+PyTorch Version 1.12.0a0+bd13bc6
+
+Container image Copyright (c) 2022, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+Copyright (c) 2014-2022 Facebook Inc.
+Copyright (c) 2011-2014 Idiap Research Institute (Ronan Collobert)
+Copyright (c) 2012-2014 Deepmind Technologies    (Koray Kavukcuoglu)
+Copyright (c) 2011-2012 NEC Laboratories America (Koray Kavukcuoglu)
+Copyright (c) 2011-2013 NYU                      (Clement Farabet)
+Copyright (c) 2006-2010 NEC Laboratories America (Ronan Collobert, Leon Bottou, Iain Melvin, Jason Weston)
+Copyright (c) 2006      Idiap Research Institute (Samy Bengio)
+Copyright (c) 2001-2004 Idiap Research Institute (Ronan Collobert, Samy Bengio, Johnny Mariethoz)
+Copyright (c) 2015      Google Inc.
+Copyright (c) 2015      Yangqing Jia
+Copyright (c) 2013-2016 The Caffe contributors
+All rights reserved.
+
+Various files include modifications (c) NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+NOTE: Mellanox network driver detected, but NVIDIA peer memory driver not
+      detected.  Multi-node communication performance may be reduced.
+
+r_4_lr_0.1_wd_0.0005_momentum_0.9_batch_64_epoch_200
+Files already downloaded and verified
+Files already downloaded and verified
+Epoch 1/200 - Train Running Loss: 1579.3611 - Valid Loss: 286.4531 - Valid Accuracy: 0.3120
+Epoch 2/200 - Train Running Loss: 991.2733 - Valid Loss: 251.5670 - Valid Accuracy: 0.4565
+Epoch 3/200 - Train Running Loss: 944.4828 - Valid Loss: 243.3634 - Valid Accuracy: 0.4321
+Epoch 4/200 - Train Running Loss: 895.0702 - Valid Loss: 301.8609 - Valid Accuracy: 0.3280
+Epoch 5/200 - Train Running Loss: 940.0656 - Valid Loss: 216.7477 - Valid Accuracy: 0.4996
+Epoch 6/200 - Train Running Loss: 827.6910 - Valid Loss: 206.7947 - Valid Accuracy: 0.5261
+Epoch 7/200 - Train Running Loss: 763.8994 - Valid Loss: 207.2859 - Valid Accuracy: 0.5341
+Epoch 8/200 - Train Running Loss: 714.0726 - Valid Loss: 192.1983 - Valid Accuracy: 0.5802
+Epoch 9/200 - Train Running Loss: 669.1266 - Valid Loss: 181.2259 - Valid Accuracy: 0.6029
+Epoch 10/200 - Train Running Loss: 639.7014 - Valid Loss: 176.7017 - Valid Accuracy: 0.6101
+Epoch 11/200 - Train Running Loss: 609.7524 - Valid Loss: 153.0562 - Valid Accuracy: 0.6594
+Epoch 12/200 - Train Running Loss: 589.8001 - Valid Loss: 189.2038 - Valid Accuracy: 0.5893
+Epoch 13/200 - Train Running Loss: 570.2881 - Valid Loss: 154.5722 - Valid Accuracy: 0.6624
+Epoch 14/200 - Train Running Loss: 563.8790 - Valid Loss: 169.3707 - Valid Accuracy: 0.6348
+Epoch 15/200 - Train Running Loss: 545.6032 - Valid Loss: 165.1363 - Valid Accuracy: 0.6466
+Epoch 16/200 - Train Running Loss: 534.0585 - Valid Loss: 185.2155 - Valid Accuracy: 0.6027
+Epoch 17/200 - Train Running Loss: 529.9493 - Valid Loss: 145.3891 - Valid Accuracy: 0.6843
+Epoch 18/200 - Train Running Loss: 518.3742 - Valid Loss: 152.0016 - Valid Accuracy: 0.6628
+Epoch 19/200 - Train Running Loss: 512.7917 - Valid Loss: 137.7367 - Valid Accuracy: 0.6961
+Epoch 20/200 - Train Running Loss: 505.6290 - Valid Loss: 161.9619 - Valid Accuracy: 0.6487
+Epoch 21/200 - Train Running Loss: 495.9738 - Valid Loss: 156.5083 - Valid Accuracy: 0.6643
+Epoch 22/200 - Train Running Loss: 495.0636 - Valid Loss: 182.0270 - Valid Accuracy: 0.6273
+Epoch 23/200 - Train Running Loss: 484.4640 - Valid Loss: 162.7966 - Valid Accuracy: 0.6565
+Epoch 24/200 - Train Running Loss: 481.6880 - Valid Loss: 144.3445 - Valid Accuracy: 0.6867
+Epoch 25/200 - Train Running Loss: 473.0848 - Valid Loss: 165.6147 - Valid Accuracy: 0.6576
+Epoch 26/200 - Train Running Loss: 473.4317 - Valid Loss: 154.7252 - Valid Accuracy: 0.6656
+Epoch 27/200 - Train Running Loss: 467.7435 - Valid Loss: 180.6566 - Valid Accuracy: 0.6356
+Epoch 28/200 - Train Running Loss: 470.3097 - Valid Loss: 159.0987 - Valid Accuracy: 0.6642
+Epoch 29/200 - Train Running Loss: 461.5948 - Valid Loss: 151.6820 - Valid Accuracy: 0.6765
+Epoch 30/200 - Train Running Loss: 458.2804 - Valid Loss: 158.6287 - Valid Accuracy: 0.6657
+Epoch 31/200 - Train Running Loss: 454.9482 - Valid Loss: 149.0544 - Valid Accuracy: 0.6867
+Epoch 32/200 - Train Running Loss: 452.9988 - Valid Loss: 176.9905 - Valid Accuracy: 0.6305
+Epoch 33/200 - Train Running Loss: 449.1427 - Valid Loss: 152.5769 - Valid Accuracy: 0.6713
+Epoch 34/200 - Train Running Loss: 450.0942 - Valid Loss: 155.3827 - Valid Accuracy: 0.6723
+Epoch 35/200 - Train Running Loss: 442.7858 - Valid Loss: 142.9292 - Valid Accuracy: 0.6942
+Epoch 36/200 - Train Running Loss: 439.3756 - Valid Loss: 156.2584 - Valid Accuracy: 0.6684
+Epoch 37/200 - Train Running Loss: 437.9941 - Valid Loss: 152.6063 - Valid Accuracy: 0.6855
+Epoch 38/200 - Train Running Loss: 432.6854 - Valid Loss: 154.6703 - Valid Accuracy: 0.6764
+Epoch 39/200 - Train Running Loss: 433.8948 - Valid Loss: 148.2014 - Valid Accuracy: 0.6952
+Epoch 40/200 - Train Running Loss: 432.5444 - Valid Loss: 154.9096 - Valid Accuracy: 0.6777
+Epoch 41/200 - Train Running Loss: 422.4241 - Valid Loss: 153.9000 - Valid Accuracy: 0.6833
+Epoch 42/200 - Train Running Loss: 428.6940 - Valid Loss: 156.2446 - Valid Accuracy: 0.6587
+Epoch 43/200 - Train Running Loss: 420.4001 - Valid Loss: 147.8065 - Valid Accuracy: 0.6862
+Epoch 44/200 - Train Running Loss: 419.2689 - Valid Loss: 138.4281 - Valid Accuracy: 0.7051
+Epoch 45/200 - Train Running Loss: 418.2700 - Valid Loss: 144.2658 - Valid Accuracy: 0.6942
+Epoch 46/200 - Train Running Loss: 416.8072 - Valid Loss: 137.0045 - Valid Accuracy: 0.7094
+Epoch 47/200 - Train Running Loss: 412.1984 - Valid Loss: 140.4100 - Valid Accuracy: 0.7055
+Epoch 48/200 - Train Running Loss: 411.8974 - Valid Loss: 149.9158 - Valid Accuracy: 0.6901
+Epoch 49/200 - Train Running Loss: 408.6697 - Valid Loss: 140.9661 - Valid Accuracy: 0.7026
+Epoch 50/200 - Train Running Loss: 401.3664 - Valid Loss: 159.3930 - Valid Accuracy: 0.6638
+Epoch 51/200 - Train Running Loss: 400.8168 - Valid Loss: 137.6519 - Valid Accuracy: 0.7100
+Epoch 52/200 - Train Running Loss: 397.3013 - Valid Loss: 145.4848 - Valid Accuracy: 0.6927
+Epoch 53/200 - Train Running Loss: 396.6730 - Valid Loss: 160.6831 - Valid Accuracy: 0.6692
+Epoch 54/200 - Train Running Loss: 400.0766 - Valid Loss: 155.0899 - Valid Accuracy: 0.6783
+Epoch 55/200 - Train Running Loss: 389.3052 - Valid Loss: 168.8933 - Valid Accuracy: 0.6563
+Epoch 56/200 - Train Running Loss: 387.5886 - Valid Loss: 163.6878 - Valid Accuracy: 0.6645
+Epoch 57/200 - Train Running Loss: 385.7382 - Valid Loss: 149.1761 - Valid Accuracy: 0.6882
+Epoch 58/200 - Train Running Loss: 379.9818 - Valid Loss: 154.2502 - Valid Accuracy: 0.6785
+Epoch 59/200 - Train Running Loss: 379.6426 - Valid Loss: 148.8672 - Valid Accuracy: 0.6823
+Epoch 60/200 - Train Running Loss: 384.4883 - Valid Loss: 137.7289 - Valid Accuracy: 0.7096
+Epoch 61/200 - Train Running Loss: 376.1265 - Valid Loss: 148.3661 - Valid Accuracy: 0.6844
+Epoch 62/200 - Train Running Loss: 373.2641 - Valid Loss: 153.8556 - Valid Accuracy: 0.6955
+Epoch 63/200 - Train Running Loss: 370.9631 - Valid Loss: 133.3120 - Valid Accuracy: 0.7183
+Epoch 64/200 - Train Running Loss: 366.1328 - Valid Loss: 153.0471 - Valid Accuracy: 0.6853
+Epoch 65/200 - Train Running Loss: 361.0090 - Valid Loss: 136.5306 - Valid Accuracy: 0.7085
+Epoch 66/200 - Train Running Loss: 365.7036 - Valid Loss: 131.5375 - Valid Accuracy: 0.7199
+Epoch 67/200 - Train Running Loss: 357.5773 - Valid Loss: 144.4019 - Valid Accuracy: 0.7020
+Epoch 68/200 - Train Running Loss: 358.5609 - Valid Loss: 132.9466 - Valid Accuracy: 0.7171
+Epoch 69/200 - Train Running Loss: 350.7154 - Valid Loss: 146.3272 - Valid Accuracy: 0.6974
+Epoch 70/200 - Train Running Loss: 349.8857 - Valid Loss: 135.9254 - Valid Accuracy: 0.7139
+Epoch 71/200 - Train Running Loss: 347.1045 - Valid Loss: 132.7545 - Valid Accuracy: 0.7199
+Epoch 72/200 - Train Running Loss: 344.9290 - Valid Loss: 145.0697 - Valid Accuracy: 0.7005
+Epoch 73/200 - Train Running Loss: 336.3543 - Valid Loss: 142.8130 - Valid Accuracy: 0.7086
+Epoch 74/200 - Train Running Loss: 335.7036 - Valid Loss: 139.8672 - Valid Accuracy: 0.7083
+Epoch 75/200 - Train Running Loss: 333.5448 - Valid Loss: 130.9034 - Valid Accuracy: 0.7323
+Epoch 76/200 - Train Running Loss: 334.0757 - Valid Loss: 138.0420 - Valid Accuracy: 0.7135
+Epoch 77/200 - Train Running Loss: 322.2596 - Valid Loss: 125.9073 - Valid Accuracy: 0.7380
+Epoch 78/200 - Train Running Loss: 323.0476 - Valid Loss: 128.9683 - Valid Accuracy: 0.7371
+Epoch 79/200 - Train Running Loss: 319.6559 - Valid Loss: 144.3936 - Valid Accuracy: 0.7057
+Epoch 80/200 - Train Running Loss: 314.6440 - Valid Loss: 137.5629 - Valid Accuracy: 0.7181
+Epoch 81/200 - Train Running Loss: 312.4069 - Valid Loss: 131.3336 - Valid Accuracy: 0.7283
+Epoch 82/200 - Train Running Loss: 311.5635 - Valid Loss: 138.8943 - Valid Accuracy: 0.7124
+Epoch 83/200 - Train Running Loss: 301.4131 - Valid Loss: 143.2777 - Valid Accuracy: 0.7096
+Epoch 84/200 - Train Running Loss: 303.9487 - Valid Loss: 129.0948 - Valid Accuracy: 0.7346
+Epoch 85/200 - Train Running Loss: 295.9498 - Valid Loss: 131.0470 - Valid Accuracy: 0.7314
+Epoch 86/200 - Train Running Loss: 292.3040 - Valid Loss: 132.1472 - Valid Accuracy: 0.7237
+Epoch 87/200 - Train Running Loss: 292.4822 - Valid Loss: 135.0843 - Valid Accuracy: 0.7191
+Epoch 88/200 - Train Running Loss: 288.2849 - Valid Loss: 129.5141 - Valid Accuracy: 0.7418
+Epoch 89/200 - Train Running Loss: 280.8114 - Valid Loss: 135.4322 - Valid Accuracy: 0.7267
+Epoch 90/200 - Train Running Loss: 280.3272 - Valid Loss: 128.7408 - Valid Accuracy: 0.7340
+Epoch 91/200 - Train Running Loss: 274.8100 - Valid Loss: 139.2345 - Valid Accuracy: 0.7191
+Epoch 92/200 - Train Running Loss: 277.2346 - Valid Loss: 146.4107 - Valid Accuracy: 0.7146
+Epoch 93/200 - Train Running Loss: 266.2612 - Valid Loss: 135.5969 - Valid Accuracy: 0.7299
+Epoch 94/200 - Train Running Loss: 264.7520 - Valid Loss: 136.7020 - Valid Accuracy: 0.7278
+Epoch 95/200 - Train Running Loss: 262.9363 - Valid Loss: 146.2786 - Valid Accuracy: 0.7044
+Epoch 96/200 - Train Running Loss: 253.8834 - Valid Loss: 143.1508 - Valid Accuracy: 0.7193
+Epoch 97/200 - Train Running Loss: 251.7554 - Valid Loss: 131.3364 - Valid Accuracy: 0.7282
+Epoch 98/200 - Train Running Loss: 245.7241 - Valid Loss: 127.5150 - Valid Accuracy: 0.7486
+Epoch 99/200 - Train Running Loss: 241.2750 - Valid Loss: 135.2217 - Valid Accuracy: 0.7344
+Epoch 100/200 - Train Running Loss: 239.0138 - Valid Loss: 134.7760 - Valid Accuracy: 0.7375
+Epoch 101/200 - Train Running Loss: 235.2455 - Valid Loss: 143.6181 - Valid Accuracy: 0.7155
+Epoch 102/200 - Train Running Loss: 235.6424 - Valid Loss: 145.4561 - Valid Accuracy: 0.7202
+Epoch 103/200 - Train Running Loss: 226.3805 - Valid Loss: 137.1354 - Valid Accuracy: 0.7328
+Epoch 104/200 - Train Running Loss: 222.3631 - Valid Loss: 144.6742 - Valid Accuracy: 0.7189
+Epoch 105/200 - Train Running Loss: 218.4437 - Valid Loss: 143.0589 - Valid Accuracy: 0.7285
+Epoch 106/200 - Train Running Loss: 213.3994 - Valid Loss: 138.0464 - Valid Accuracy: 0.7294
+Epoch 107/200 - Train Running Loss: 212.3760 - Valid Loss: 145.9870 - Valid Accuracy: 0.7214
+Epoch 108/200 - Train Running Loss: 200.6236 - Valid Loss: 146.7552 - Valid Accuracy: 0.7279
+Epoch 109/200 - Train Running Loss: 203.8399 - Valid Loss: 138.8936 - Valid Accuracy: 0.7377
+Epoch 110/200 - Train Running Loss: 199.1774 - Valid Loss: 134.9716 - Valid Accuracy: 0.7425
+Epoch 111/200 - Train Running Loss: 197.0000 - Valid Loss: 142.9033 - Valid Accuracy: 0.7315
+Epoch 112/200 - Train Running Loss: 188.0086 - Valid Loss: 131.8619 - Valid Accuracy: 0.7488
+Epoch 113/200 - Train Running Loss: 181.4466 - Valid Loss: 133.0188 - Valid Accuracy: 0.7458
+Epoch 114/200 - Train Running Loss: 182.6812 - Valid Loss: 141.2493 - Valid Accuracy: 0.7358
+Epoch 115/200 - Train Running Loss: 176.4287 - Valid Loss: 144.2318 - Valid Accuracy: 0.7365
+Epoch 116/200 - Train Running Loss: 175.7702 - Valid Loss: 149.5286 - Valid Accuracy: 0.7274
+Epoch 117/200 - Train Running Loss: 170.3759 - Valid Loss: 149.9111 - Valid Accuracy: 0.7169
+Epoch 118/200 - Train Running Loss: 164.6303 - Valid Loss: 144.3964 - Valid Accuracy: 0.7364
+Epoch 119/200 - Train Running Loss: 163.6950 - Valid Loss: 138.5544 - Valid Accuracy: 0.7459
+Epoch 120/200 - Train Running Loss: 157.6020 - Valid Loss: 131.8886 - Valid Accuracy: 0.7565
+Epoch 121/200 - Train Running Loss: 150.8035 - Valid Loss: 157.8796 - Valid Accuracy: 0.7228
+Epoch 122/200 - Train Running Loss: 151.0805 - Valid Loss: 140.0375 - Valid Accuracy: 0.7395
+Epoch 123/200 - Train Running Loss: 143.1614 - Valid Loss: 138.0503 - Valid Accuracy: 0.7442
+Epoch 124/200 - Train Running Loss: 145.4079 - Valid Loss: 141.5394 - Valid Accuracy: 0.7489
+Epoch 125/200 - Train Running Loss: 135.8296 - Valid Loss: 138.3969 - Valid Accuracy: 0.7532
+Epoch 126/200 - Train Running Loss: 130.4199 - Valid Loss: 146.2864 - Valid Accuracy: 0.7339
+Epoch 127/200 - Train Running Loss: 128.2366 - Valid Loss: 142.1736 - Valid Accuracy: 0.7476
+Epoch 128/200 - Train Running Loss: 127.4123 - Valid Loss: 153.6992 - Valid Accuracy: 0.7355
+Epoch 129/200 - Train Running Loss: 126.3464 - Valid Loss: 133.4101 - Valid Accuracy: 0.7570
+Epoch 130/200 - Train Running Loss: 118.2697 - Valid Loss: 147.5624 - Valid Accuracy: 0.7390
+Epoch 131/200 - Train Running Loss: 119.8074 - Valid Loss: 159.7767 - Valid Accuracy: 0.7241
+Epoch 132/200 - Train Running Loss: 107.7223 - Valid Loss: 151.4412 - Valid Accuracy: 0.7385
+Epoch 133/200 - Train Running Loss: 110.0953 - Valid Loss: 145.0902 - Valid Accuracy: 0.7481
+Epoch 134/200 - Train Running Loss: 108.2582 - Valid Loss: 141.5800 - Valid Accuracy: 0.7607
+Epoch 135/200 - Train Running Loss: 102.6594 - Valid Loss: 143.5415 - Valid Accuracy: 0.7544
+Epoch 136/200 - Train Running Loss: 97.8640 - Valid Loss: 143.1631 - Valid Accuracy: 0.7614
+Epoch 137/200 - Train Running Loss: 94.7753 - Valid Loss: 149.0209 - Valid Accuracy: 0.7487
+Epoch 138/200 - Train Running Loss: 89.6380 - Valid Loss: 159.7206 - Valid Accuracy: 0.7432
+Epoch 139/200 - Train Running Loss: 90.2050 - Valid Loss: 146.3759 - Valid Accuracy: 0.7549
+Epoch 140/200 - Train Running Loss: 79.8601 - Valid Loss: 159.3222 - Valid Accuracy: 0.7471
+Epoch 141/200 - Train Running Loss: 80.1601 - Valid Loss: 153.9010 - Valid Accuracy: 0.7519
+Epoch 142/200 - Train Running Loss: 76.9471 - Valid Loss: 152.1879 - Valid Accuracy: 0.7516
+Epoch 143/200 - Train Running Loss: 74.3252 - Valid Loss: 149.6832 - Valid Accuracy: 0.7578
+Epoch 144/200 - Train Running Loss: 72.6158 - Valid Loss: 145.4159 - Valid Accuracy: 0.7636
+Epoch 145/200 - Train Running Loss: 60.8775 - Valid Loss: 149.0775 - Valid Accuracy: 0.7626
+Epoch 146/200 - Train Running Loss: 60.3711 - Valid Loss: 155.5707 - Valid Accuracy: 0.7568
+Epoch 147/200 - Train Running Loss: 64.1188 - Valid Loss: 155.4060 - Valid Accuracy: 0.7470
+Epoch 148/200 - Train Running Loss: 62.6573 - Valid Loss: 153.1938 - Valid Accuracy: 0.7565
+Epoch 149/200 - Train Running Loss: 50.6019 - Valid Loss: 159.0545 - Valid Accuracy: 0.7513
+Epoch 150/200 - Train Running Loss: 51.5740 - Valid Loss: 155.4197 - Valid Accuracy: 0.7656
+Epoch 151/200 - Train Running Loss: 46.9493 - Valid Loss: 158.9079 - Valid Accuracy: 0.7541
+Epoch 152/200 - Train Running Loss: 47.9181 - Valid Loss: 161.2830 - Valid Accuracy: 0.7507
+Epoch 153/200 - Train Running Loss: 50.6338 - Valid Loss: 159.3237 - Valid Accuracy: 0.7563
+Epoch 154/200 - Train Running Loss: 40.7572 - Valid Loss: 152.4799 - Valid Accuracy: 0.7650
+Epoch 155/200 - Train Running Loss: 34.4157 - Valid Loss: 155.3059 - Valid Accuracy: 0.7657
+Epoch 156/200 - Train Running Loss: 35.3082 - Valid Loss: 166.6108 - Valid Accuracy: 0.7530
+Epoch 157/200 - Train Running Loss: 32.8512 - Valid Loss: 160.5967 - Valid Accuracy: 0.7612
+Epoch 158/200 - Train Running Loss: 33.2137 - Valid Loss: 163.0275 - Valid Accuracy: 0.7623
+Epoch 159/200 - Train Running Loss: 28.6591 - Valid Loss: 157.9615 - Valid Accuracy: 0.7727
+Epoch 160/200 - Train Running Loss: 27.8058 - Valid Loss: 160.7906 - Valid Accuracy: 0.7673
+Epoch 161/200 - Train Running Loss: 16.5048 - Valid Loss: 153.1684 - Valid Accuracy: 0.7812
+Epoch 162/200 - Train Running Loss: 18.1294 - Valid Loss: 159.6319 - Valid Accuracy: 0.7754
+Epoch 163/200 - Train Running Loss: 16.4799 - Valid Loss: 156.3768 - Valid Accuracy: 0.7790
+Epoch 164/200 - Train Running Loss: 12.5289 - Valid Loss: 164.9786 - Valid Accuracy: 0.7726
+Epoch 165/200 - Train Running Loss: 15.1928 - Valid Loss: 167.6841 - Valid Accuracy: 0.7716
+Epoch 166/200 - Train Running Loss: 14.8079 - Valid Loss: 165.6629 - Valid Accuracy: 0.7724
+Epoch 167/200 - Train Running Loss: 9.2435 - Valid Loss: 166.1716 - Valid Accuracy: 0.7757
+Epoch 168/200 - Train Running Loss: 8.2821 - Valid Loss: 165.4097 - Valid Accuracy: 0.7786
+Epoch 169/200 - Train Running Loss: 7.2629 - Valid Loss: 168.6080 - Valid Accuracy: 0.7739
+Epoch 170/200 - Train Running Loss: 5.2004 - Valid Loss: 161.8171 - Valid Accuracy: 0.7888
+Epoch 171/200 - Train Running Loss: 4.2931 - Valid Loss: 159.4694 - Valid Accuracy: 0.7907
+Epoch 172/200 - Train Running Loss: 3.2672 - Valid Loss: 157.4934 - Valid Accuracy: 0.7942
+Epoch 173/200 - Train Running Loss: 2.1669 - Valid Loss: 159.9512 - Valid Accuracy: 0.7876
+Epoch 174/200 - Train Running Loss: 2.2323 - Valid Loss: 162.2090 - Valid Accuracy: 0.7855
+Epoch 175/200 - Train Running Loss: 1.4270 - Valid Loss: 156.4243 - Valid Accuracy: 0.7938
+Epoch 176/200 - Train Running Loss: 1.0796 - Valid Loss: 154.5375 - Valid Accuracy: 0.7997
+Epoch 177/200 - Train Running Loss: 1.1217 - Valid Loss: 153.9142 - Valid Accuracy: 0.7982
+Epoch 178/200 - Train Running Loss: 0.9851 - Valid Loss: 153.1006 - Valid Accuracy: 0.7994
+Epoch 179/200 - Train Running Loss: 0.9771 - Valid Loss: 152.1274 - Valid Accuracy: 0.7988
+Epoch 180/200 - Train Running Loss: 0.9724 - Valid Loss: 152.4648 - Valid Accuracy: 0.7998
+Epoch 181/200 - Train Running Loss: 0.9699 - Valid Loss: 151.2377 - Valid Accuracy: 0.8005
+Epoch 182/200 - Train Running Loss: 0.9893 - Valid Loss: 150.9272 - Valid Accuracy: 0.7992
+Epoch 183/200 - Train Running Loss: 1.0179 - Valid Loss: 150.9219 - Valid Accuracy: 0.8012
+Epoch 184/200 - Train Running Loss: 1.0129 - Valid Loss: 149.4208 - Valid Accuracy: 0.8020
+Epoch 185/200 - Train Running Loss: 1.0046 - Valid Loss: 150.4424 - Valid Accuracy: 0.8002
+Epoch 186/200 - Train Running Loss: 1.0358 - Valid Loss: 150.5842 - Valid Accuracy: 0.8002
+Epoch 187/200 - Train Running Loss: 1.0630 - Valid Loss: 149.3332 - Valid Accuracy: 0.8013
+Epoch 188/200 - Train Running Loss: 1.0445 - Valid Loss: 149.5435 - Valid Accuracy: 0.8005
+Epoch 189/200 - Train Running Loss: 1.0208 - Valid Loss: 149.1908 - Valid Accuracy: 0.8011
+Epoch 190/200 - Train Running Loss: 1.0393 - Valid Loss: 150.2923 - Valid Accuracy: 0.8015
+Epoch 191/200 - Train Running Loss: 1.0499 - Valid Loss: 149.8712 - Valid Accuracy: 0.8012
+Epoch 192/200 - Train Running Loss: 1.0485 - Valid Loss: 149.5251 - Valid Accuracy: 0.8022
+Epoch 193/200 - Train Running Loss: 1.0489 - Valid Loss: 148.4960 - Valid Accuracy: 0.8020
+Epoch 194/200 - Train Running Loss: 1.0415 - Valid Loss: 149.3935 - Valid Accuracy: 0.8014
+Epoch 195/200 - Train Running Loss: 1.0483 - Valid Loss: 148.8543 - Valid Accuracy: 0.8009
+Epoch 196/200 - Train Running Loss: 1.0534 - Valid Loss: 149.1559 - Valid Accuracy: 0.8003
+Epoch 197/200 - Train Running Loss: 1.0562 - Valid Loss: 149.3542 - Valid Accuracy: 0.8007
+Epoch 198/200 - Train Running Loss: 1.0364 - Valid Loss: 149.2217 - Valid Accuracy: 0.8014
+Epoch 199/200 - Train Running Loss: 1.0576 - Valid Loss: 149.0566 - Valid Accuracy: 0.8004
+Epoch 200/200 - Train Running Loss: 1.0430 - Valid Loss: 149.2708 - Valid Accuracy: 0.8014
+Training finished.
+Epoch 200/200 - Train Running Loss: 1.0430 - Test Loss: 149.5710 - Test Accuracy: 0.8005
+======================================================================================
+
+			Resource Usage on 2023-11-27 00:01:58.494448:
+
+	JobId: 5565431.pbs101  
+	Project: personal-limu0006 
+	Exit Status: 0
+	NCPUs Requested: 16				NCPUs Used: 16
+							CPU Time Used: 02:49:51
+	Memory Requested: 110gb 			Memory Used: 7481644kb
+							Vmem Used: 59432984kb
+	Walltime requested: 04:00:00 			Walltime Used: 01:37:23
+	
+	Execution Nodes Used: (x1000c0s6b0n0:ngpus=1:ncpus=16:mem=115343360kb)
+	
+ ======================================================================================
