@@ -76,9 +76,9 @@ class ResNet50(nn.Module):
         return nn.Sequential(conv, bn, relu, pool)
 
     def stage_blocks(self, n, in_channels, out_channels, stride=1):
-        layers = [self.block(in_channels, out_channels, stride, self.r)]
+        layers = [self.block(in_channels, out_channels, stride=stride, r=self.r)]
         for i in range(n - 1):
-            layers.append(self.block(out_channels * 4, out_channels, self.r))
+            layers.append(self.block(out_channels * 4, out_channels, r=self.r))
         return nn.Sequential(*layers)
 
     def stage_output(self, in_channels, out_channels, stride=1):
@@ -130,8 +130,8 @@ class ResNetBlock(nn.Module):
 
 class SEBlock(nn.Module):
     def __init__(self, channel, r):
-        super().__init__()
-        reductionChannel = int(channel / r)
+        super(SEBlock, self).__init__()
+        reductionChannel = channel // r
         self.pool = nn.AdaptiveAvgPool2d((1, 1))
         self.fc1 = nn.Linear(channel, reductionChannel)
         self.relu = nn.ReLU()
@@ -190,7 +190,7 @@ class SEResNetBlock(nn.Module):
         # apply SE
         scale = self.seBlock(x)
 
-        out = x * scale + identity
+        out = x * scale.expand_as(x) + identity
         out = self.relu(out)
 
         return out

@@ -23,7 +23,7 @@ learning_rate = 0.01
 weight_decay = 0.0005
 epochs = 200
 batch_size = 64
-senet_r = 2
+senet_r = 32
 
 info = f"r_{senet_r}_lr_{learning_rate}_batch_{batch_size}_epoch_{epochs}"
 print(info)
