@@ -28,7 +28,7 @@ def plot_loss_acc(json_file_path):
     train_loss = [float(i) / train_sample_num for i in train_loss]
     valid_loss = [float(i) / valid_sample_num for i in valid_loss]
 
-    plt.figure(figsize=(10, 5))
+    plt.figure(figsize=(10, 4))
     plt.subplot(121)
     plt.plot(train_loss, label='train')
     plt.plot(valid_loss, label='valid')
