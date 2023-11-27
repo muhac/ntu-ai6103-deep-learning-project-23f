@@ -18,11 +18,10 @@ import json
 
 """# Setings"""
 
-# remember to check the epoch, testing epoch is 200,
-learning_rate = 0.01
-weight_decay = 0.00005
+learning_rate = 0.2
+weight_decay = 0.0005
 momentum = 0.9
-epochs = 200
+epochs = 300
 batch_size = 64
 senet_r = 8
 
@@ -47,7 +46,7 @@ random.seed(seed)
 
 
 class ResNet50(nn.Module):
-    def __init__(self, block, num_classes=1000, r=1):
+    def __init__(self, block, num_classes=10, r=1):
         super(ResNet50, self).__init__()
         self.block = block
         self.r = r

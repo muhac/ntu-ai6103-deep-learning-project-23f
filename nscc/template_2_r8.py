@@ -47,7 +47,7 @@ random.seed(seed)
 
 
 class ResNet50(nn.Module):
-    def __init__(self, block, num_classes=1000, r=1):
+    def __init__(self, block, num_classes=10, r=1):
         super(ResNet50, self).__init__()
         self.block = block
         self.r = r

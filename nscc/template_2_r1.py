@@ -18,14 +18,14 @@ import json
 
 """# Setings"""
 
-# remember to check the epoch, testing epoch is 200,
-learning_rate = 0.01
-weight_decay = 0.00005
-epochs = 200
+learning_rate = 0.1
+weight_decay = 0.0005
+momentum = 0.9
+epochs = 300
 batch_size = 64
 senet_r = 8
 
-info = f"r_{senet_r}_lr_{learning_rate}_wd_{weight_decay}_batch_{batch_size}_epoch_{epochs}"
+info = f"r_{senet_r}_lr_{learning_rate}_wd_{weight_decay}_momentum_{momentum}_batch_{batch_size}_epoch_{epochs}"
 print(info)
 
 acc_and_loss_saved_filname = f"experiment2_senet_{info}.json"
@@ -46,7 +46,7 @@ random.seed(seed)
 
 
 class ResNet50(nn.Module):
-    def __init__(self, block, num_classes=1000, r=1):
+    def __init__(self, block, num_classes=10, r=1):
         super(ResNet50, self).__init__()
         self.block = block
         self.r = r
@@ -219,9 +219,9 @@ test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=batch_size, s
 """# Training"""
 
 model = ResNet50(SEResNetBlock, r=senet_r)
-optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate, weight_decay=weight_decay)
-criterion = nn.CrossEntropyLoss()
+optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate, weight_decay=weight_decay, momentum=momentum)
 scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=epochs)
+criterion = nn.CrossEntropyLoss()
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = model.to(device)
