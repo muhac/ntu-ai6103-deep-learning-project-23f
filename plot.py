@@ -2,9 +2,9 @@ import os
 import json
 import matplotlib.pyplot as plt
 
-json_file_dir = './experiments/'
-train_sample_num = 40000
-valid_sample_num = 10000
+json_file_dir = './tasks/'
+train_sample_num = 48000
+valid_sample_num = 2000
 
 def get_json_file_path(json_file_dir):
     json_file_path_list = []
@@ -33,12 +33,16 @@ def plot_loss_acc(json_file_path):
     plt.plot(train_loss, label='train')
     plt.plot(valid_loss, label='valid')
     plt.title('Loss')
+    plt.xlabel('Epoch')
+    plt.ylabel('Loss')
     plt.legend()
 
     plt.subplot(122)
     plt.plot(train_acc, label='train')
     plt.plot(valid_acc, label='valid')
     plt.title('Accuracy')
+    plt.xlabel('Epoch')
+    plt.ylabel('Accuracy')
     plt.legend()
 
     plt.savefig(json_file_path[:-5] + '.png')
